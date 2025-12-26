@@ -1,0 +1,8 @@
+site insane : playgroundtensorflow
+
+pour lancer jupyter :
+source venv/bin/activate
+jupyter-notebook nomdufichier
+
+tp3 : utiliser fonction activation relu
+il faut bien faire apparaitre le surapprentissage sur ce tp
