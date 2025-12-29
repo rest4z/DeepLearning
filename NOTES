@@ -6,3 +6,8 @@ jupyter-notebook nomdufichier
 
 tp3 : utiliser fonction activation relu
 il faut bien faire apparaitre le surapprentissage sur ce tp
+
+conda activate torch_env
+conda deactivate
+
+ne pas oublier kernel jupyter ( torch_env )
