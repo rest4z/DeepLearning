@@ -1,0 +1,59 @@
+hidden_size = 16
+output_size = 10
+epochs = 100
+
+criterion = nn.MSELoss()
+
+model = SimpleNN(INPUT_DIM, hidden_size, output_size).to(device)
+optimizer = optim.Adam(model.parameters(), lr=0.001)
+
+print(model)
+
+model.train()
+for epoch in range(epochs):
+    for batch_X, batch_y in train_loader:
+        batch_X, batch_y = batch_X.to(device), batch_y.to(device)
+        output = model(batch_X)           # Forward pass
+        batch_y_onehot = F.one_hot(batch_y, num_classes=output_size).float()
+        loss = criterion(output, batch_y_onehot) # Calcul de la perte
+        optimizer.zero_grad()
+        loss.backward()                   # Backpropagation
+        optimizer.step()                  # Mise à jour des poids
+
+    if epoch % 1 == 0:
+        print(f"Epoch {epoch+1}, Loss: {loss.item():.4f}")
+
+
+def evaluate(model, data_loader, criterion, device):
+    eval_loss = 0.0
+    acc_sum = 0.0
+    total = 0
+
+    model.eval()
+    with torch.no_grad():  # pas de calcul de gradients
+        for batch_X, batch_y in data_loader:
+            batch_X, batch_y = batch_X.to(device), batch_y.to(device)
+            output = model(batch_X)  # Forward pass
+
+            # Conversion des labels en one-hot pour la perte MSE
+            batch_y_onehot = F.one_hot(batch_y, num_classes=output_size).float()
+
+            # Calcul de la perte
+            loss = criterion(output, batch_y_onehot)
+            eval_loss += loss.item() * batch_X.size(0)  # somme pondérée par batch_size
+
+            # Calcul de l'accuracy avec ta fonction
+            acc = accuracy(output, batch_y)
+            acc_sum += acc.item() * batch_X.size(0)
+
+            total += batch_X.size(0)
+
+    # Moyenne de la perte et de l'accuracy
+    eval_loss /= total
+    accuracy_val = acc_sum / total
+    print(f" Accuracy: {accuracy_val*100:.2f}%")
+
+print("evalutation Train : ")
+evaluate(model, train_loader, criterion, device)
+print("evalutation Test : ")
+evaluate(model, test_loader, criterion, device)

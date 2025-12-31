@@ -1,0 +1,92 @@
+train set = 1%
+lr = 0.001
+
+MSE + tanh:
+	couhces cachees : 2
+	neurones par couches cachees : 64
+	epochs : 100
+
+	evalutation Train :
+	  Accuracy: 100.00%
+	evalutation Test :
+	  Accuracy: 86.77%
+
+
+	couhces cachees : 2
+	neurones par couches cachees : 32
+	epochs : 100
+
+	evalutation Train :
+	 Loss: 0.0072, Accuracy: 99.50%
+	evalutation Test :
+	 Loss: 0.0301, Accuracy: 85.23%
+
+
+	couhces cachees : 3
+	neurones par couches cachees : 16
+	epochs : 100
+
+	evalutation Train :
+	 Accuracy: 95.33%
+	evalutation Test :
+	 Accuracy: 81.13%
+
+	couhces cachees : 3
+	neurones par couches cachees : 64
+	epochs : 100
+
+	evalutation Train :
+	 Accuracy: 100.00%
+	evalutation Test :
+	 Accuracy: 83.90%
+
+MSE + ReLU:
+
+	couhces cachees : 3
+	neurones par couches cachees : 16
+	epochs : 100
+
+	evalutation Train :
+	 Accuracy: 86.83%
+	evalutation Test :
+	 Accuracy: 73.84%
+
+	couhces cachees : 3
+	neurones par couches cachees : 64
+	epochs : 100
+
+	evalutation Train :
+	 Accuracy: 100.00%
+	evalutation Test :
+	 Accuracy: 83.69%
+
+crossEntropy + tanh :
+
+	couhces cachees : 3
+	neurones par couches cachees : 16
+	epochs : 100
+
+	evalutation Train :
+	 Accuracy: 96.50%
+	evalutation Test :
+	 Accuracy: 73.15%
+
+	couhces cachees : 3
+	neurones par couches cachees : 64
+	epochs : 100
+
+	evalutation Train :
+	 Accuracy: 100.00%
+	evalutation Test :
+	 Accuracy: 84.51%
+
+
+	couhces cachees : 3
+	neurones par couches cachees : 64
+	epochs : 100
+	(ReLU)
+
+	evalutation Train :
+	 Accuracy: 100.00%
+	evalutation Test :
+	 Accuracy: 82.65%
